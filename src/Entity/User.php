@@ -25,10 +25,16 @@ class User extends BaseUser
      */
     private $voyages;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Voyage", mappedBy="planner", orphanRemoval=true)
+     */
+    private $myVoyages;
+
     public function __construct()
     {
         parent::__construct();
         $this->voyages = new ArrayCollection();
+        $this->myVoyages = new ArrayCollection();
         // your own logic
     }
 
@@ -55,6 +61,37 @@ class User extends BaseUser
         if ($this->voyages->contains($voyage)) {
             $this->voyages->removeElement($voyage);
             $voyage->removeParticipant($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Voyage[]
+     */
+    public function getMyVoyages(): Collection
+    {
+        return $this->myVoyages;
+    }
+
+    public function addMyVoyage(Voyage $myVoyage): self
+    {
+        if (!$this->myVoyages->contains($myVoyage)) {
+            $this->myVoyages[] = $myVoyage;
+            $myVoyage->setPlanner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMyVoyage(Voyage $myVoyage): self
+    {
+        if ($this->myVoyages->contains($myVoyage)) {
+            $this->myVoyages->removeElement($myVoyage);
+            // set the owning side to null (unless already changed)
+            if ($myVoyage->getPlanner() === $this) {
+                $myVoyage->setPlanner(null);
+            }
         }
 
         return $this;

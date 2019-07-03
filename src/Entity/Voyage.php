@@ -48,6 +48,12 @@ class Voyage
      */
     private $activites;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="myVoyages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $planner;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -160,6 +166,18 @@ class Voyage
                 $activite->setVoyage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPlanner(): ?User
+    {
+        return $this->planner;
+    }
+
+    public function setPlanner(?User $planner): self
+    {
+        $this->planner = $planner;
 
         return $this;
     }
