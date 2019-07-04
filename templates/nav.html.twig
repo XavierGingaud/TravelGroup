@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark mdb-color special-color fixed-top scrolling-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark mdb-color stylish-color fixed-top scrolling-navbar">
     <a class="navbar-brand" href="{{ path('home') }}">TravelGroup</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Accueil</a>
+                <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-search"></i> Rechercher un Voyage</a>
             </li>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li class="nav-item">
-                <a class="nav-link" href="#">Créer un Voyage</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-plus"></i> Nouveau voyage</a>
+                </li>
             {% endif %}
-            <li class="nav-item">
-                <a class="nav-link" href="#">Rechercher un Voyage</a>
-            </li>
     
             <!-- Dropdown -->
             <li class="nav-item dropdown mr-5">
