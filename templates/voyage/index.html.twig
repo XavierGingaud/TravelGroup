@@ -8,31 +8,29 @@
 
 
 {% block body %}
-<div class="container">
+<div class="container mt-5">
     <h1>Voyage index</h1>
 
-    <table class="table">
+    <p>Vous ne trouvez pas votre bonheur ? Pourquoi ne pas <a style="text-decoration: underline;" href="{{ path('voyage_new') }}">plannifier un voyage</a> ?</p>
+    <table class="table text-center">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Description</th>
-                <th>Starting_date</th>
-                <th>Ending_date</th>
-                <th>actions</th>
+                <th>Date de départ</th>
+                <th>Date de retour</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for voyage in voyages %}
             <tr>
-                <td>{{ voyage.id }}</td>
                 <td>{{ voyage.title }}</td>
                 <td>{{ voyage.description }}</td>
-                <td>{{ voyage.startingDate ? voyage.startingDate|date('Y-m-d') : '' }}</td>
-                <td>{{ voyage.endingDate ? voyage.endingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ voyage.startingDate ? voyage.startingDate|date('d-m-Y') : '' }}</td>
+                <td>{{ voyage.endingDate ? voyage.endingDate|date('d-m-Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('voyage_show', {'id': voyage.id}) }}">show</a>
-                    <a href="{{ path('voyage_edit', {'id': voyage.id}) }}">edit</a>
+                    <a class="btn deep-orange text-white" href="{{ path('voyage_show', {'id': voyage.id}) }}">Voir</a>
                 </td>
             </tr>
         {% else %}
@@ -43,6 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('voyage_new') }}">Create new</a>
 </div>
 {% endblock %}

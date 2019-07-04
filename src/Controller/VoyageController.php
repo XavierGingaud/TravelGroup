@@ -36,7 +36,7 @@ class VoyageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $voyage->setPlanner($this->getUser());
-            $voyage->setParticipants($this->getUser());
+            $voyage->addParticipant($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($voyage);
             $entityManager->flush();
@@ -55,9 +55,25 @@ class VoyageController extends AbstractController
      */
     public function show(Voyage $voyage): Response
     {
-        return $this->render('voyage/show.html.twig', [
-            'voyage' => $voyage,
-        ]);
+        if($this->getUser() !== null){
+            if ($voyage->getPlanner() == $this->getUser() || $this->getUser()->hasRole('ROLE_SUPER_ADMIN')){
+                return $this->render('voyage/show.html.twig', [
+                    'voyage' => $voyage,
+                    'nbr_participants' => count($voyage->getParticipants()),
+                    'canEdit' => true,
+                ]);
+            }else{
+                return $this->render('voyage/show.html.twig', [
+                    'voyage' => $voyage,
+                    'nbr_participants' => count($voyage->getParticipants()),
+                ]);
+            }
+        }else{
+            return $this->render('voyage/show.html.twig', [
+                'voyage' => $voyage,
+                'nbr_participants' => count($voyage->getParticipants()),
+            ]);
+        }
     }
 
     /**
