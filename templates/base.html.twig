@@ -8,7 +8,11 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div id="swup" class="transition-fade">
+            {% block body %}
+            {% endblock %}
+        </div>
+        
         {% block javascripts %}
             {% include "javascripts.html.twig" %}
         {% endblock %}
