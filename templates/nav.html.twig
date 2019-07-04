@@ -1,44 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark mdb-color stylish-color fixed-top scrolling-navbar">
-    <a class="navbar-brand" href="{{ path('home') }}">TravelGroup</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('home') }}"><i class="fas fa-home"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('voyage_index') }}"><i class="fas fa-search"></i> Rechercher un Voyage</a>
-            </li>
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('home') }}">TravelGroup</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-plus"></i> Nouveau voyage</a>
+                    <a class="nav-link" href="{{ path('home') }}"><i class="fas fa-home"></i></a>
                 </li>
-            {% endif %}
-    
-            <!-- Dropdown -->
-            <li class="nav-item dropdown mr-5">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilisateur</a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        <a class="dropdown-item text-danger" href="{{ path('easyadmin') }}"><i class="fas fa-user-lock"></i> Administration</a>
-                        <div class="dropdown-divider"></div>
-                    {% endif %}
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}"><i class="fas fa-user"></i> Mon profil</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-plane"></i> Mes voyages</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-                    {% else %}
-                        <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">Connexion</a>
-                        <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
-                    {% endif %}
-                </div>
-            </li>
-    
-        </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('voyage_index') }}"><i class="fas fa-search"></i> Rechercher un Voyage</a>
+                </li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-plus"></i> Nouveau voyage</a>
+                    </li>
+                {% endif %}
+        
+                <!-- Dropdown -->
+                <li class="nav-item dropdown mr-5">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilisateur</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            <a class="dropdown-item text-danger" href="{{ path('easyadmin') }}"><i class="fas fa-user-lock"></i> Administration</a>
+                            <div class="dropdown-divider"></div>
+                        {% endif %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}"><i class="fas fa-user"></i> Mon profil</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-plane"></i> Mes voyages</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                        {% else %}
+                            <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">Connexion</a>
+                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
+                        {% endif %}
+                    </div>
+                </li>
+        
+            </ul>
+        </div>
     </div>
-  
 </nav>

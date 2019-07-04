@@ -2,14 +2,67 @@
 
 {% block title %}TravelGroup - Accueil{% endblock %}
 
+{% block stylesheets %}
+    {% include "stylesheets.html.twig" %}
+    <!-- Custom CSS -->
+    <style type="text/css">
+        html,
+        body,
+        .view {
+            height: 100%;
+        }
+
+        .top-nav-collapse{
+            background-color:#f4511e;
+        }
+
+        @media (max-width: 740px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 1000px;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 850px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 650px;
+            }
+        }
+        @media (min-width: 800px) and (max-width: 850px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #1C2331!important;
+            }
+        }
+    </style>
+{% endblock stylesheets %}
+
 {% block body %}
 
-    <main class="container-fluid mt-5 pt-5">
-        <section class="card mdb-color stylish-color wow fadeIn animated">
+    <div class="view full-page-intro" style="background-image: url('https://subocea.com/uploads/media/default/0001/06/bfc30bb9b301035b2c486b14d6ff6980b758cc5a.jpeg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row wow fadeIn">
+                    <div class="col-md-6 mb-4 white-text text-center mx-auto">
+                        <h1 class="display-4 font-weight-bold">TravelGroup</h1>
+                        <hr class="hr-light">
+                        <p>
+                            <strong>La plateforme d'organisation de voyage simple et efficace</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <!-- Content -->
-            <div class="card-body text-white text-center py-5 px-5 my-5">
-    
+    <main class="container mt-5 pt-5">
+
+        <section class="card mdb-color deep-orange darken-1 wow fadeIn animated">
+            <div class="card-body text-white text-center py-5 my-5">
                 <h1 class="mb-4">
                     <strong>Bienvenue sur TravelGroup</strong>
                 </h1>
@@ -20,9 +73,33 @@
                     Voir les voyages en cours
                     <i class="fas fa-plane ml-2"></i>
                 </a>
-    
             </div>
-            <!-- Content -->
         </section>
+
+        <hr class="my-3">
+
+        <section class="row">
+            
+            <div class="col-4">
+                <div class="card mb-3">
+                    <div class="view overlay">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cXTThxoywNQ" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">MDB Quick Start</h4>
+                        <p class="card-text">Get started with MDBootstrap, the world's most popular Material Design framework
+                            for building
+                            responsive, mobile-first sites.</p>
+                        <p class="card-text">
+                            <strong>5 minutes, a few clicks and... done. You will be surprised at how easy it is.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
     </main>
 {% endblock %}
