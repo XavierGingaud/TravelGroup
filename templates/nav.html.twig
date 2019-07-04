@@ -25,10 +25,15 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilisateur</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a class="dropdown-item" href="#">Mon profil</a>
                     <a class="dropdown-item" href="#">Mes voyages</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Déconnexion</a>
+                    <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">Connexion</a>
+                    <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
+                    {% endif %}
                 </div>
             </li>
     
