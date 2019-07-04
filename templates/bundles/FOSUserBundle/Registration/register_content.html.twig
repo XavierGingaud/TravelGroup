@@ -2,24 +2,24 @@
 
 <form name="fos_user_registration_form" method="post" action="/register/" class="text-center border border-light p-5">
     <div id="fos_user_registration_form">
-    	<div>
+    	<div class="md-form">
     		<label for="fos_user_registration_form_email" class="required">Adresse e-mail</label>
     		<input type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" class="form-control">
-    	</div>
-    	<div>
-    		<label for="fos_user_registration_form_username" class="required">Nom d'utilisateur</label>
-    		<input type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="180" pattern=".{2,}" class="form-control">
-    	</div>
-    	<div>
-    		<label for="fos_user_registration_form_plainPassword_first" class="required">Mot de passe</label>
-    		<input type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" autocomplete="new-password" class="form-control">
-    	</div>
-    		<div>
-    			<label for="fos_user_registration_form_plainPassword_second" class="required">Répéter le mot de passe</label>
-    			<input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" autocomplete="new-password" class="form-control">
-    	<div>
-	        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-	    </div>
+		</div>
+		<div class="md-form">
+			<label for="fos_user_registration_form_username" class="required">Nom d'utilisateur</label>
+			<input type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="180" pattern=".{2,}" class="form-control">
+		</div>
+		<div class="md-form">
+			<label for="fos_user_registration_form_plainPassword_first" class="required">Mot de passe</label>
+			<input type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" autocomplete="new-password" class="form-control">
+		</div>
+		<div class="md-form">
+			<label for="fos_user_registration_form_plainPassword_second" class="required">Répéter le mot de passe</label>
+			<input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" autocomplete="new-password" class="form-control">
+		</div>
+		{{ form_row(form._token) }}
+	</div>
     <div>
         <input type="submit" value="Créer un compte">
     </div>
