@@ -16,8 +16,6 @@ class VoyageType extends AbstractType
             ->add('description')
             ->add('starting_date')
             ->add('ending_date')
-            ->add('participants')
-            ->add('planner')
         ;
     }
 

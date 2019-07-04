@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {% include 'renav.html.twig' %}
+{% endblock %}
+
 {% block title %}Voyage index{% endblock %}
 
+
 {% block body %}
+<div class="container">
     <h1>Voyage index</h1>
 
     <table class="table">
@@ -38,4 +44,5 @@
     </table>
 
     <a href="{{ path('voyage_new') }}">Create new</a>
+</div>
 {% endblock %}
