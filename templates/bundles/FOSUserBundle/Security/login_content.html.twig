@@ -4,19 +4,26 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
+<form class="text-center border border-light p-5" action="{{ path("fos_user_security_check") }}" method="post">
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     {% endif %}
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+    <div class="md-form">
+        <label for="username">{{ 'security.login.username'|trans }}</label>
+        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+    </div>
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+    <div class="md-form">
+        <label for="password">{{ 'security.login.password'|trans }}</label>
+        <input type="password" class="form-control" id="password" name="_password" required="required" autocomplete="current-password" />
+    </div>
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" />
+        <label class="custom-control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+    </div>
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    <button type="submit" class="btn mdb-color special-color text-white" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
 </form>
+
