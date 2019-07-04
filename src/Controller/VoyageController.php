@@ -35,6 +35,8 @@ class VoyageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $voyage->setPlanner($this->getUser());
+            $voyage->setParticipants($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($voyage);
             $entityManager->flush();
