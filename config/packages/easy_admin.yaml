@@ -1,5 +1,6 @@
 easy_admin:
   site_name: 'TravelGroup'
+
   entities:
 #        # List the entity class name you want to manage
     User:
@@ -17,3 +18,5 @@ easy_admin:
         - 'bundles/easyadmin/bootstrap-all.css'
       js:
         - 'bundles/easyadmin/bootstrap-all.js'
+
+    menu: [{label: 'Retour au site', url: '../', icon: ''}, 'User', 'Voyage', 'Activite']
