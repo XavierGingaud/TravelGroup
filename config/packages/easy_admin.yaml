@@ -19,4 +19,4 @@ easy_admin:
       js:
         - 'bundles/easyadmin/bootstrap-all.js'
 
-    menu: [{label: 'Retour au site', url: '../'}, 'User', 'Voyage', 'Activite']
+    menu: [{label: 'Retour au site', url: '../', icon: ''}, 'User', 'Voyage', 'Activite']
