@@ -8,12 +8,12 @@
         {% endblock %}
     </head>
     <body>
-        {{ include('nav.html.twig') }}
-        <div id="swup" class="transition-fade">
-            {% block body %}
-            {% endblock %}
-        </div>
-        
+        <header>
+            {{ include('nav.html.twig') }}
+        </header>
+        {% block body %}
+        {% endblock %}
+
         {% block javascripts %}
             {% include "javascripts.html.twig" %}
         {% endblock %}
