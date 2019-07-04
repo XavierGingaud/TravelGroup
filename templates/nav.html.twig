@@ -12,17 +12,17 @@
             </li>
             {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Créer un Voyage</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="#">Rechercher un Voyage</a>
             </li>
     
             <!-- Dropdown -->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown mr-5">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilisateur</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
