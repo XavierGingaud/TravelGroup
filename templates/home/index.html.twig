@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}TravelGroup - Accueil{% endblock %}
 
 {% block body %}
 
@@ -16,7 +16,7 @@
                 <p class="mb-4">
                     Sur TravelGroup, organisez vos voyages et leurs activités simplement grâce à une interface développée et pensée à cet effet
                 </p>
-                <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg waves-effect waves-light">
+                <a href="{{ path('voyage_index') }}" class="btn btn-outline-white btn-lg waves-effect waves-light">
                     Voir les voyages en cours
                     <i class="fas fa-plane ml-2"></i>
                 </a>
