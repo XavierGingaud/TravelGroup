@@ -36,7 +36,7 @@ class VoyageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $voyage->setPlanner($this->getUser());
-            $voyage->setParticipants($this->getUser());
+            $voyage->addParticipant($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($voyage);
             $entityManager->flush();
@@ -44,8 +44,14 @@ class VoyageController extends AbstractController
             return $this->redirectToRoute('voyage_index');
         }
 
+        $current_year = getdate()['year'];
+        for ($i=0; $i < 4; $i++) { 
+            $allowed_years[] = $current_year+$i;
+        }
+
         return $this->render('voyage/new.html.twig', [
             'voyage' => $voyage,
+            'years' => $allowed_years,
             'form' => $form->createView(),
         ]);
     }
@@ -55,9 +61,25 @@ class VoyageController extends AbstractController
      */
     public function show(Voyage $voyage): Response
     {
-        return $this->render('voyage/show.html.twig', [
-            'voyage' => $voyage,
-        ]);
+        if($this->getUser() !== null){
+            if ($voyage->getPlanner() == $this->getUser() || $this->getUser()->hasRole('ROLE_SUPER_ADMIN')){
+                return $this->render('voyage/show.html.twig', [
+                    'voyage' => $voyage,
+                    'nbr_participants' => count($voyage->getParticipants()),
+                    'canEdit' => true,
+                ]);
+            }else{
+                return $this->render('voyage/show.html.twig', [
+                    'voyage' => $voyage,
+                    'nbr_participants' => count($voyage->getParticipants()),
+                ]);
+            }
+        }else{
+            return $this->render('voyage/show.html.twig', [
+                'voyage' => $voyage,
+                'nbr_participants' => count($voyage->getParticipants()),
+            ]);
+        }
     }
 
     /**
@@ -75,9 +97,15 @@ class VoyageController extends AbstractController
                 'id' => $voyage->getId(),
             ]);
         }
+        
+        $current_year = getdate()['year'];
+        for ($i=0; $i < 4; $i++) { 
+            $allowed_years[] = $current_year+$i;
+        }
 
         return $this->render('voyage/edit.html.twig', [
             'voyage' => $voyage,
+            'years' => $allowed_years,
             'form' => $form->createView(),
         ]);
     }

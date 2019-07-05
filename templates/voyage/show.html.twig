@@ -3,41 +3,28 @@
 {% block title %}Voyage{% endblock %}
 
 {% block stylesheets %}
-    {% include 'renav.html.twig' %}
+	{% include 'renav.html.twig' %}
 {% endblock %}
 
 
 {% block body %}
-    <h1>Voyage</h1>
+<div class="container">
+	<h1 class="text-center mt-5">{{ voyage.title }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ voyage.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ voyage.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ voyage.description }}</td>
-            </tr>
-            <tr>
-                <th>Starting_date</th>
-                <td>{{ voyage.startingDate ? voyage.startingDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Ending_date</th>
-                <td>{{ voyage.endingDate ? voyage.endingDate|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<h3>{{ voyage.description }}</h3>
+	<p>Date de départ : {{ voyage.startingDate ? voyage.startingDate|date('d-m-Y') : '' }}</p>
+	<p>Date de retour : {{ voyage.endingDate ? voyage.endingDate|date('d-m-Y') : '' }}</p>
+	<p>Nombre de Participants : {{ nbr_participants }}</p>
 
-    <a href="{{ path('voyage_index') }}">back to list</a>
+	<div class="d-flex justify-content-around">
 
-    <a href="{{ path('voyage_edit', {'id': voyage.id}) }}">edit</a>
+	{% if canEdit is defined %}
+		<a class="btn btn-secondary" href="{{ path('voyage_edit', {'id': voyage.id}) }}">Modifier</a>
 
-    {{ include('voyage/_delete_form.html.twig') }}
+		{{ include('voyage/_delete_form.html.twig') }}
+	{% endif %}
+
+		<a class="btn btn-primary flex-end" href="{{ path('voyage_index') }}">Retourner à la liste des voyages</a>
+	</div>
+</div>
 {% endblock %}
