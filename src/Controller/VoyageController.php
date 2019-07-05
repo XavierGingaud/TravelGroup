@@ -71,6 +71,7 @@ class VoyageController extends AbstractController
             }else{
                 return $this->render('voyage/show.html.twig', [
                     'voyage' => $voyage,
+                    'join' => true,
                     'nbr_participants' => count($voyage->getParticipants()),
                 ]);
             }
@@ -97,7 +98,7 @@ class VoyageController extends AbstractController
                 'id' => $voyage->getId(),
             ]);
         }
-        
+
         $current_year = getdate()['year'];
         for ($i=0; $i < 4; $i++) { 
             $allowed_years[] = $current_year+$i;
@@ -123,4 +124,26 @@ class VoyageController extends AbstractController
 
         return $this->redirectToRoute('voyage_index');
     }
+
+    // /**
+    //  * @Route("/{id}/join", name="voyage_join", methods={"GET", "POST"})
+    //  */
+    // public function join(Voyage $voyage)
+    // {
+    //     if($this->getUser() !== null){
+    //         $participants = $voyage->getParticipants();
+    //         foreach ($participants as $value) {
+    //             if($value == $this->getUser()){
+    //                 $canJoin = false;
+    //                 break;
+    //             }else{
+    //                 $canJoin = true;
+    //             }
+    //         }
+    //         if ($canJoin){
+    //             $voyage->addParticipant($this->getUser());
+    //         }
+    //     }
+    //     return $this->show($voyage);
+    // }
 }
