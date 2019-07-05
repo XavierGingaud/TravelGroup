@@ -9,32 +9,12 @@
 
 {% block body %}
 <div class="container">
-	<h1>Voyage</h1>
+	<h1 class="text-center mt-5">{{ voyage.title }}</h1>
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Titre</th>
-				<td>{{ voyage.title }}</td>
-			</tr>
-			<tr>
-				<th>Description</th>
-				<td>{{ voyage.description }}</td>
-			</tr>
-			<tr>
-				<th>Date de départ</th>
-				<td>{{ voyage.startingDate ? voyage.startingDate|date('d-m-Y') : '' }}</td>
-			</tr>
-			<tr>
-				<th>Date de retour</th>
-				<td>{{ voyage.endingDate ? voyage.endingDate|date('d-m-Y') : '' }}</td>
-			</tr>
-			<tr>
-				<th>Nombre de Participants</th>
-				<td>{{ nbr_participants }}</td>
-			</tr>
-		</tbody>
-	</table>
+	<h3>{{ voyage.description }}</h3>
+	<p>Date de départ : {{ voyage.startingDate ? voyage.startingDate|date('d-m-Y') : '' }}</p>
+	<p>Date de retour : {{ voyage.endingDate ? voyage.endingDate|date('d-m-Y') : '' }}</p>
+	<p>Nombre de Participants : {{ nbr_participants }}</p>
 
 	<div class="d-flex justify-content-around">
 
