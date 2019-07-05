@@ -1,4 +1,130 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<form name="voyage" method="post">
+    <div id="voyage">
+    	<div class="row">
+    		<label for="voyage_title" class="required">Destination</label>
+    		<input type="text" id="voyage_title" name="voyage[title]" required="required" maxlength="255" class="form-control mb-4">
+    	</div>
+		<div class="row">
+			<label for="voyage_description" class="required">Description</label>
+			<textarea id="voyage_description" name="voyage[description]" required="required" class="form-control mb-4"></textarea>
+		</div>
+		<div>
+			<label class="required">Date de départ</label>
+			<div id="voyage_starting_date" class="row">
+				<select id="voyage_starting_date_day" name="voyage[starting_date][day]" class="col-4 custom-select">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+				</select>
+				<select id="voyage_starting_date_month" name="voyage[starting_date][month]" class="col-4 custom-select">
+					<option value="1">janvier</option>
+					<option value="2">février</option>
+					<option value="3">mars</option>
+					<option value="4">avril</option>
+					<option value="5">mai</option>
+					<option value="6">juin</option>
+					<option value="7">juillet</option>
+					<option value="8">août</option>
+					<option value="9">septembre</option>
+					<option value="10">octobre</option>
+					<option value="11">novembre</option>
+					<option value="12">décembre</option>
+				</select>
+				<select id="voyage_starting_date_year" name="voyage[starting_date][year]" class="col-4 custom-select mb-4">
+					{% for year in years %}
+						<option value="{{ year }}">{{ year }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		<div>
+			<label class="required">Date de retour</label>
+			<div id="voyage_ending_date" class="row">
+				<select id="voyage_ending_date_day" name="voyage[ending_date][day]" class="col-4 custom-select">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+				</select>
+				<select id="voyage_ending_date_month" name="voyage[ending_date][month]" class="col-4 custom-select">
+					<option value="1">janvier</option>
+					<option value="2">février</option>
+					<option value="3">mars</option>
+					<option value="4">avril</option>
+					<option value="5">mai</option>
+					<option value="6">juin</option>
+					<option value="7">juillet</option>
+					<option value="8">août</option>
+					<option value="9">septembre</option>
+					<option value="10">octobre</option>
+					<option value="11">novembre</option>
+					<option value="12">décembre</option>
+				</select>
+				<select id="voyage_ending_date_year" name="voyage[ending_date][year]" class="col-4 custom-select mb-4">
+					{% for year in years %}
+						<option value="{{ year }}">{{ year }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		{{ form_row(form._token) }}
+	</div>
+	<div class="d-flex justify-content-around">
+    	<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+</form>

@@ -3,42 +3,48 @@
 {% block title %}Voyage{% endblock %}
 
 {% block stylesheets %}
-    {% include 'renav.html.twig' %}
+	{% include 'renav.html.twig' %}
 {% endblock %}
 
 
 {% block body %}
-    <h1>Voyage</h1>
+<div class="container">
+	<h1>Voyage</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Titre</th>
-                <td>{{ voyage.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ voyage.description }}</td>
-            </tr>
-            <tr>
-                <th>Date de départ</th>
-                <td>{{ voyage.startingDate ? voyage.startingDate|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date de retour</th>
-                <td>{{ voyage.endingDate ? voyage.endingDate|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Nombre de Participants</th>
-                <td>{{ nbr_participants }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Titre</th>
+				<td>{{ voyage.title }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ voyage.description }}</td>
+			</tr>
+			<tr>
+				<th>Date de départ</th>
+				<td>{{ voyage.startingDate ? voyage.startingDate|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Date de retour</th>
+				<td>{{ voyage.endingDate ? voyage.endingDate|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Nombre de Participants</th>
+				<td>{{ nbr_participants }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('voyage_index') }}">back to list</a>
-    {% if canEdit is defined %}
-        <a href="{{ path('voyage_edit', {'id': voyage.id}) }}">edit</a>
+	<div class="d-flex justify-content-around">
 
-        {{ include('voyage/_delete_form.html.twig') }}
-    {% endif %}
+	{% if canEdit is defined %}
+		<a class="btn btn-secondary" href="{{ path('voyage_edit', {'id': voyage.id}) }}">Modifier</a>
+
+		{{ include('voyage/_delete_form.html.twig') }}
+	{% endif %}
+
+		<a class="btn btn-primary flex-end" href="{{ path('voyage_index') }}">Retourner à la liste des voyages</a>
+	</div>
+</div>
 {% endblock %}

@@ -44,8 +44,14 @@ class VoyageController extends AbstractController
             return $this->redirectToRoute('voyage_index');
         }
 
+        $current_year = getdate()['year'];
+        for ($i=0; $i < 4; $i++) { 
+            $allowed_years[] = $current_year+$i;
+        }
+
         return $this->render('voyage/new.html.twig', [
             'voyage' => $voyage,
+            'years' => $allowed_years,
             'form' => $form->createView(),
         ]);
     }
@@ -91,9 +97,15 @@ class VoyageController extends AbstractController
                 'id' => $voyage->getId(),
             ]);
         }
+        
+        $current_year = getdate()['year'];
+        for ($i=0; $i < 4; $i++) { 
+            $allowed_years[] = $current_year+$i;
+        }
 
         return $this->render('voyage/edit.html.twig', [
             'voyage' => $voyage,
+            'years' => $allowed_years,
             'form' => $form->createView(),
         ]);
     }
