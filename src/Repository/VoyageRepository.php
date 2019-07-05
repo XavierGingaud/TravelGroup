@@ -36,15 +36,15 @@ class VoyageRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Voyage
+    
+    public function findOneById($value): ?Voyage
     {
-        return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
+        return $this->createQueryBuilder('voyage')
+            ->andWhere('voyage.id = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }

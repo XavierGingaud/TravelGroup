@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{% include 'renav.html.twig' %}
+{% endblock %}
+
+{% block title %}Hello JoinController!{% endblock %}
+
+{% block body %}
+
+
+
+{% if error is defined %}
+	<div class="container mt-5">
+	    <h1>Erreur</h1>
+	    <p>{{ error }}</p>
+	</div>
+{% else %}
+	<div class="container mt-5">
+	    <h1>Si vous voyez cette page, ne paniquez pas !</h1>
+	    <p>Le serveur est peut-être en surcharge, veuillez réésayer plus tard !</p>
+	</div>
+{% endif %}
+
+<p><a href="{{ path('voyage_index') }}">Retourner à la liste des voyages</a></p>
+{% endblock %}

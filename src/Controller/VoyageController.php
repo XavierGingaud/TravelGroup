@@ -128,26 +128,4 @@ class VoyageController extends AbstractController
 
         return $this->redirectToRoute('voyage_index');
     }
-
-    // /**
-    //  * @Route("/{id}/join", name="voyage_join", methods={"GET", "POST"})
-    //  */
-    // public function join(Voyage $voyage)
-    // {
-    //     if($this->getUser() !== null){
-    //         $participants = $voyage->getParticipants();
-    //         foreach ($participants as $value) {
-    //             if($value == $this->getUser()){
-    //                 $canJoin = false;
-    //                 break;
-    //             }else{
-    //                 $canJoin = true;
-    //             }
-    //         }
-    //         if ($canJoin){
-    //             $voyage->addParticipant($this->getUser());
-    //         }
-    //     }
-    //     return $this->show($voyage);
-    // }
 }

@@ -24,8 +24,8 @@
 		{{ include('voyage/_delete_form.html.twig') }}
 	{% endif %}
 
-	{% if join is defined %}
-		<a class="btn stylish-color text-white flex-end" href="{# {{ path('voyage_join', {'id': voyage.id}) }} #}">Rejoindre l'aventure !</a>
+	{% if join is defined and is_granted('IS_AUTHENTICATED_FULLY') %}
+		<a class="btn stylish-color text-white flex-end" href="{{ path('join', {'id': voyage.id}) }}">Rejoindre l'aventure !</a>
 	{% endif %}
 
 		<a class="btn btn-primary flex-end" href="{{ path('voyage_index') }}">Retourner à la liste des voyages</a>
