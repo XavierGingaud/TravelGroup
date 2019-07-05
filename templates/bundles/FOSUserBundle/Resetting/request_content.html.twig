@@ -1,11 +1,11 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-    <div>
-        <label for="username">{{ 'resetting.request.username'|trans }}</label>
-        <input type="text" id="username" name="username" required="required" />
+<form class="text-center border border-light p-5" action="/resetting/send-email" method="POST" class="fos_user_resetting_request">
+    <div class="md-form">
+        <label for="username" class="">Nom d'utilisateur ou adresse e-mail</label>
+        <input type="text" id="username" name="username" required="required" class="form-control">
     </div>
     <div>
-        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+        <input type="submit" class="btn mdb-color special-color text-white mb-4" value="Réinitialiser le mot de passe">
     </div>
 </form>

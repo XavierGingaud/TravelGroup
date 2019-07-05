@@ -21,6 +21,7 @@
 		{{ form_row(form._token) }}
 	</div>
     <div>
-        <input type="submit" value="Créer un compte">
+        <input type="submit" class="btn mdb-color special-color text-white mb-4" value="Créer un compte">
     </div>
+    <p class="text-center">Déja membre ? <a href="{{ path('fos_user_security_login') }}">Connectez-vous</a> !</p>
 </form>

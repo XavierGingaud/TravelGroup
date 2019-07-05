@@ -25,6 +25,8 @@
         <label class="custom-control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
     </div>
 
-    <button type="submit" class="btn mdb-color special-color text-white" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+    <button type="submit" class="btn mdb-color special-color text-white mb-4" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+    <p class="text-center"><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a></p>
+    <p class="text-center">Pas encore membre ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous</a> !</p>
 </form>
 

@@ -30,30 +30,34 @@ class VoyageController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $voyage = new Voyage();
-        $form = $this->createForm(VoyageType::class, $voyage);
-        $form->handleRequest($request);
+        if($this->getUser()){
+            $voyage = new Voyage();
+            $form = $this->createForm(VoyageType::class, $voyage);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $voyage->setPlanner($this->getUser());
-            $voyage->addParticipant($this->getUser());
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($voyage);
-            $entityManager->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
+                $voyage->setPlanner($this->getUser());
+                $voyage->addParticipant($this->getUser());
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($voyage);
+                $entityManager->flush();
 
-            return $this->redirectToRoute('voyage_index');
+                return $this->redirectToRoute('voyage_index');
+            }
+
+            $current_year = getdate()['year'];
+            for ($i=0; $i < 4; $i++) { 
+                $allowed_years[] = $current_year+$i;
+            }
+
+            return $this->render('voyage/new.html.twig', [
+                'voyage' => $voyage,
+                'years' => $allowed_years,
+                'form' => $form->createView(),
+            ]);
+        }else{
+            return $this->redirectToRoute('fos_user_security_login');
         }
-
-        $current_year = getdate()['year'];
-        for ($i=0; $i < 4; $i++) { 
-            $allowed_years[] = $current_year+$i;
-        }
-
-        return $this->render('voyage/new.html.twig', [
-            'voyage' => $voyage,
-            'years' => $allowed_years,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
