@@ -1,17 +1,18 @@
 <footer class="page-footer mdb-color deep-orange darken-2 text-center font-small mt-4 wow fadeIn">
 
     <div class="pt-4">
-        <a class="btn btn-outline-white waves-effect waves-light" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank" role="button">Download MDB
-            <i class="fas fa-download ml-2"></i>
+        <a class="btn btn-outline-white waves-effect waves-light" href="{{ path('fos_user_security_login') }}" role="button">
+            Connexion
+            <i class="fas fa-user ml-2"></i>
         </a>
-        <a class="btn btn-outline-white waves-effect waves-light" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start free tutorial
-            <i class="fas fa-graduation-cap ml-2"></i>
+        <a class="btn btn-outline-white waves-effect waves-light" href="{{ path('voyage_index') }}" role="button">
+            Voir les voyages
+            <i class="fas fa-plane ml-2"></i>
         </a>
     </div>
 
     <div class="footer-copyright py-3">
-        © 2019 Copyright:
-        <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+        Copyright &copy; TravelGroup - {{ "now"|date("Y") }}
     </div>
 
 </footer>
